@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+div {
+	background:#7DC3FF;
+	height:10%;
+}
+
+img {
+	height:200px;
+	width:auto;
+	margin:auto;
+	display:block;
+}

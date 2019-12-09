@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Todos los Habitantes</title>
+
+<link rel="stylesheet" type="text/css" href="static/css/tabla.css" th:href="@{/css/tabla.css}">
+<link rel="stylesheet" type="text/css" href="static/css/botones.css" th:href="@{/css/botones.css}">
+<link rel="stylesheet" type="text/css" href="static/css/letra.css" th:href="@{/css/letra.css}">
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h3>Lista de todos los habitantes</h3>
+	<br>
+	<a th:href="@{/addHabitante}">Agregar Habitante</a>
+	<br>
+	<br>
+	<br>
+	<a th:href="@{/menu}">Ir al menu</a>
+	<br>
+	<br>
+
+	<div id="main-container">
+	<table> <!--   border="3" cellpadding="2" cellspacing="2">-->
+		<thead>
+			<tr>
+				<th>Id Habitante</th>
+				<th>Nombre</th>
+				<th>Username</th>
+				<th>Activo</th>
+				<th>Password</th>
+				<th>Rol1</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="habitante : ${habitanteList}">
+				<td><span th:text="${habitante.idhabitante}">Id
+						Habitante</span></td>
+				<td><span th:text="${habitante.nombre}">Nombre</span></td>
+				<td><span th:text="${habitante.username}">Username</span></td>
+				<td><span th:text="${habitante.enabled}">Activo</span></td>
+				<td><span th:text="${habitante.password}">Password</span></td>
+				<td><span th:text="${habitante.rol}">Rol</span></td>
+				<td><a
+					th:href="@{/editHabitante/{idhabitante}(idhabitante = ${habitante.idhabitante})}">Editar</a></td>
+				<td><a
+					th:href="@{/deleteHabitante/{idhabitante}(idhabitante = ${habitante.idhabitante})}">Eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>

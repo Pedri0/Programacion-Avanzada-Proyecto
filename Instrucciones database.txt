@@ -1,0 +1,24 @@
+$2a$04$6Ts8R4xzpWnPU9nIAmT81ugF.af6eYV95q10VD91NgKbHjaVTvkaS password encriptada para 1234
+
+
+Para iniciar el programa es necesaario agregar un habitante con rol administrador para ello en mysql agregamos a la base de datos:
+La contraseña que se debe ingresar en el login de la aplicacion web es 1234
+
+insert into habitante (idhabitante,enabled,password,username,nombre)
+values (1,0b1,"$2a$04$6Ts8R4xzpWnPU9nIAmT81ugF.af6eYV95q10VD91NgKbHjaVTvkaS","pedri0","Pedro Arturo Flores");
+
+
+Agregamos los roles solo se agregan una sola vez
+
+insert into rol (idrol,rol)
+values (1,"ROLE_ADMIN");
+insert into rol (idrol,rol)
+values (2,"ROLE_USER");
+
+En la tabla many to many agregamos al usuario los roles admin y user
+insert into rolhabitante (habitante_idhabitante,rol_idrol)
+values (1,1);
+insert into rolhabitante (habitante_idhabitante,rol_idrol)
+values (1,2);
+
+

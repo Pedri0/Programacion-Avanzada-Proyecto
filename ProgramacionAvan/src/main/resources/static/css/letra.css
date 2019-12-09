@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+p{
+	font-family: "Myriad Pro",Arial,Helvetica;
+	font-size:18pt;
+	line-height:30px;
+	word-spacing:4px;
+	text-shadow:1px 1px 0px #000;
+}

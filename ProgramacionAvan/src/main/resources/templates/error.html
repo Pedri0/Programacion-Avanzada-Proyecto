@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Error</title>
+<link rel="stylesheet" type="text/css" href="static/css/letra.css" th:href="@{/css/letra.css}">
+</head>
+<body>
+<h1>Error has ingresado valores invalidos en el formulario. No se ha guardado la informacion en la base de datos. Porfavor intentalo de nuevo.</h1>
+<br>
+<br>
+<p> Recuerda que:</p>
+<br>
+<br>
+<p>Id Habitante es un entero positivo y no debe existir un usuario con dicho Id.</p>
+<br>
+<br>
+<p>Nombre acepta cualquier numero o cadena, sin embargo debe ser el nombre de la persona.</p>
+<br>
+<br>
+<p>User name acepta cualquier cadena, sin embargo, no pueden existir dos habitantes con el mismo username ya que este es unico.</p>
+<br>
+<br>
+<p>Activo solo acepta true o false, no importa como lo escribas. Si no pusiste cualquiera de estos dos por esa razon estas viendo esta pagina de error.</p>
+<br>
+<br>
+<p>Rol acepta los valores 1 o 2 o 1,2 unicamente. 1 Es para designar el rol de Administrador. 2 Es para asignar el rol de Usuario y 1,2 Es para designar ambos roles. Si estas viendo esta pagina probablemente fue por este motivo.</p>
+</body>
+</html>

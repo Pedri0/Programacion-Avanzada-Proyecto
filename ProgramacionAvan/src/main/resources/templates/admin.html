@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Menu Administrador</title>
+<link rel="stylesheet" type="text/css" href="static/css/botones.css" th:href="@{/css/botones.css}">
+<link rel="stylesheet" type="text/css" href="static/css/letra.css" th:href="@{/css/letra.css}">
+</head>
+<body>
+	<h1 th:inline="text">Hola Marciano [[${#httpServletRequest.remoteUser}]]!</h1>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Cerrar Sesion" />
+	</form>
+	<br>
+	<br>
+	<br>
+	<a th:href="@{/menu}">Ir al menu</a>
+	<h1>
+	Usted es Administrador
+	</h1>
+	<h2>
+		<a th:href="@{/listahabitantes}"> Todos Los Habitantes</a>
+	</h2>
+</body>
+</html>

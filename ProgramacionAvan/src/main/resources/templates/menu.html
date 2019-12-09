@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Menu Principal</title>
+<link rel="stylesheet" type="text/css" href="static/css/botones.css"
+	th:href="@{/css/botones.css}">
+<link rel="stylesheet" type="text/css" href="static/css/unam.css"
+	th:href="@{/css/unam.css}">
+<link rel="stylesheet" type="text/css" href="static/css/letra.css"
+	th:href="@{/css/letra.css}">
+</head>
+<body>
+	<div>
+		<img src="static/img/unam.jpg" th:src="@{/img/unam.jpg}">
+	</div>
+	<h1 th:inline="text">Hola [[${#httpServletRequest.remoteUser}]]!</h1>
+	<form class="col-12" th:action="@{/logout}" method="post">
+		<input type="submit" value="Cerrar Sesion" />
+	</form>
+	<h1>
+		<a th:href="@{/admin}"> Pagina administrador</a> | <a
+			th:href="@{/user}"> Pagina Habitante</a>
+	</h1>
+</body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Agregar Habitante</title>
+<link rel="stylesheet" type="text/css" href="static/css/letra.css" th:href="@{/css/letra.css}">
+</head>
+<body>
+	<h1>Agregar Habitante</h1>
+
+	<form action="#" th:action="@{/addHabitante}" th:object="${habitante}"
+		method="post">
+
+		<p>
+			Nuevo Id Habitante (Porfavor no pongas un id ya existente o se eliminara la info del usuario anterior. Solo enteros): <input type="text" th:field="*{idhabitante}" />
+		</p>
+
+		<p>
+			Nombre: <input type="text" th:field="*{nombre}" />
+		</p>
+
+		<p>
+			Nuevo Username: <input type="text" th:field="*{username}" />
+		</p>
+
+		<p>
+			Actualizar Activo (Solo True o False): <input type="text" th:field="*{enabled}" />
+		</p>
+
+		<p>
+			Nuevo Password (Debe ser encriptado para ello usa la aplicacion java en el paquete util): <input type="text" th:field="*{password}" />
+		</p>
+
+		<p>
+			Nuevo Rol (1 es admin. 2 es usuario normal. 1,2 es ambos): <input type="text" th:field="*{rol}" />
+		</p>
+
+		<p>
+			<input type="submit" value="Registrar" /> 
+		</p>
+	</form>
+
+	<br>
+	<br>
+	<form action="menu">
+		<input type="submit" value="Ir al menu" />
+	</form>
+</body>
+</html>

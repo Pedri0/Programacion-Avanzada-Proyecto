@@ -1,0 +1,98 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema aesmdbf
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema aesmdbf
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `aesmdbf` DEFAULT CHARACTER SET utf8 ;
+USE `aesmdbf` ;
+
+-- -----------------------------------------------------
+-- Table `aesmdbf`.`habitante`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aesmdbf`.`habitante` (
+  `idhabitante` BIGINT(20) NOT NULL,
+  `enabled` BIT(1) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  `username` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idhabitante`),
+  UNIQUE INDEX `email_UNIQUE` (`username` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `aesmdbf`.`categoria`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aesmdbf`.`categoria` (
+  `idcategoria` BIGINT(20) NOT NULL,
+  `estado` VARCHAR(45) NULL DEFAULT NULL,
+  `evaluacion` INT NULL DEFAULT NULL,
+  `fechaEvaluacion` DATE NULL DEFAULT NULL,
+  `habitante_idhabitante` BIGINT NOT NULL,
+  `institucion` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`, `habitante_idhabitante`),
+  INDEX `fk_categoria_habitante_idx` (`habitante_idhabitante` ASC) VISIBLE,
+  CONSTRAINT `fk_categoria_habitante`
+    FOREIGN KEY (`habitante_idhabitante`)
+    REFERENCES `aesmdbf`.`habitante` (`idhabitante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `aesmdbf`.`rol`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aesmdbf`.`rol` (
+  `idrol` BIGINT(20) NOT NULL,
+  `rol` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idrol`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `aesmdbf`.`rolHabitante`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aesmdbf`.`rolHabitante` (
+  `habitante_idhabitante` BIGINT(20) NOT NULL,
+  `rol_idrol` BIGINT(20) NOT NULL,
+  INDEX `fk_rolHabitante_rol1_idx` (`rol_idrol` ASC) VISIBLE,
+  INDEX `fk_rolHabitante_habitante1_idx` (`habitante_idhabitante` ASC) VISIBLE,
+  CONSTRAINT `rol_idrol`
+    FOREIGN KEY (`rol_idrol`)
+    REFERENCES `aesmdbf`.`rol` (`idrol`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `habitante_idhabitante`
+    FOREIGN KEY (`habitante_idhabitante`)
+    REFERENCES `aesmdbf`.`habitante` (`idhabitante`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `aesmdbf`.`propuesta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `aesmdbf`.`propuesta` (
+  `idpropuesta` BIGINT(20) NOT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  `asambleaTipo` VARCHAR(45) NULL DEFAULT NULL,
+  `votos` INT NULL DEFAULT NULL,
+  `propuestacol` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idpropuesta`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
